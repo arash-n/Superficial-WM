@@ -42,7 +42,7 @@ min=`echo "$i-0.5"|bc`
 max=`echo "$i+0.5"|bc`
 ind=`echo "$i-1"|bc`
 
-fslmaths $1 -thr $min -uthr $max -bin mask
+fslmaths tmp_swm_mask -thr $min -uthr $max -bin mask
 output[$ind]=,`fslstats $2 -k mask -M`
   
 done
