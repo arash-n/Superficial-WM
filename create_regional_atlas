@@ -1,6 +1,14 @@
 #!/bin/bash 
+#This function creates parcellates superficial white matter (SWM) to SWM_atlas
 
-#This function creates parcellates superficial white matter (SWM) ROIs
+#Arash Nazeri, Kimel Family Translational Imaging-Genetics Research Lab
+
+#Developed at KKimel Family Translational Imaging Genetics Laboratory, 
+#Research Imaging Centre, Campbell Family Mental Health Institute,
+#Centre for Addiction and Mental Health, Toronto, ON, Canada
+# http://imaging-genetics.camh.ca
+
+
 #requires FSL
 #Example:
 #./create_regional_atlas SWM_mean_FA_mask_man.nii.gz HarvardOxford-cort-prob-1mm.nii.gz  SWM_atlas
