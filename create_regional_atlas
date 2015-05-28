@@ -5,21 +5,25 @@
 
 usage() {
 echo ""
-echo "Usage: create_regional_atlas SWM_mask 4D_atlas <sigma>"
+echo "Usage: create_regional_atlas SWM_mask 4D_GM_atlas SWM_atlas <sigma>"
 echo "NOTE: SWM_mask and 4D atlas file should be in the same space" 
 echo ""
 exit 1
 }
-[ "$2" = "" ] && usage
+[ "$3" = "" ] && usage
 
-if [ $3 = ""]
+if [ $4 = ""]
 then
 sigma=3
+else
+sigma=$4
 fi
 
 function create_regional_atlas
 
 {
-fslmaths $2 -
+fslmaths  $1 -sub $1 zero
+fslmerge -t tmp_4D zero $2
+fslmaths tmp_4D -s $sigma -Tmax -mul $1 $3
 
 }
