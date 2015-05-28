@@ -19,11 +19,7 @@ else
 sigma=$4
 fi
 
-function create_regional_atlas
-
-{
 fslmaths  $1 -sub $1 zero
 fslmerge -t tmp_4D zero $2
 fslmaths tmp_4D -s $sigma -Tmax -mul $1 $3
 
-}
