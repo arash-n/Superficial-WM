@@ -26,9 +26,9 @@ exit 1
 
 if [ ! $3 = "" ]
 then
-fslmaths SWM_atlas.nii.gz -mul $3 tmp_swm_mask
+fslmaths $1 -mul $3 tmp_swm_mask
 else
-fslmaths SWM_atlas.nii.gz tmp_swm_mask
+fslmaths $1 tmp_swm_mask
 fi
 
 end=`fslstats $1 -R|awk '{print $2}'`
