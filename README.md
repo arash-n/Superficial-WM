@@ -2,6 +2,10 @@
 
 Here I'll share superficial white matter (SWM) mask/atlases for use in TBSS or tractography analyses. The SWM mask is in MNI space and is created as described previously<sup>1</sup>. 
 
+Download the SWM-mask from the following link:
+
+https://www.dropbox.com/s/4v15j41ptj46zbu/SWM_mean_FA_mask_man.nii.gz?dl=0
+
 If you use SWM mask in your research, please make sure that you reference the following articles:
 
 #####References:
