@@ -24,4 +24,5 @@ fslmerge -t tmp_swm_4D zero $2
 fslmaths tmp_swm_4D -mul 100 -s $sigma tmp_swm_smooth 
 fslmaths tmp_swm_smooth -Tmaxn tmp_swm_maxn
 fslmaths tmp_swm_maxn -mul $1 $3
+rm tmp_swm*gz
 
