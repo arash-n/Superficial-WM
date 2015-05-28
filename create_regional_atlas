@@ -1,5 +1,5 @@
 #!/bin/bash 
-#This function creates parcellates superficial white matter (SWM) to SWM_atlas
+#This function parcellates superficial white matter (SWM) to SWM_atlas
 
 #Arash Nazeri, Kimel Family Translational Imaging-Genetics Research Lab
 
