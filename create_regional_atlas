@@ -1,0 +1,25 @@
+#!/bin/bash 
+
+#This function creates parcellates superficial white matter (SWM) ROIs
+#requires FSL
+
+usage() {
+echo ""
+echo "Usage: create_regional_atlas SWM_mask 4D_atlas <sigma>"
+echo "NOTE: SWM_mask and 4D atlas file should be in the same space" 
+echo ""
+exit 1
+}
+[ "$2" = "" ] && usage
+
+if [ $3 = ""]
+then
+sigma=3
+fi
+
+function create_regional_atlas
+
+{
+fslmaths $2 -
+
+}
