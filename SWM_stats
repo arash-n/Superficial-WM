@@ -13,15 +13,37 @@
 #requires FSL
 #Example:
 #./SWM_stats SWM_atlas input_image
-
+#Input image could be a diffusion metric image
 
 usage() {
 echo ""
-echo "Usage: create_regional_atlas SWM_mask 4D_GM_atlas SWM_atlas <sigma>"
+echo "Usage: SWM_stats SWM_atlas.nii.gz input_image.nii.gz [mask.nii.gz]"
 echo "NOTE: SWM_mask and 4D atlas file should be in the same space" 
 echo ""
 exit 1
 }
-[ "$3" = "" ] && usage
+[ "$2" = "" ] && usage
 
+if [ ! $3 = "" ]
+then
+fslmaths SWM_atlas.nii.gz -mul $3 tmp_swm_mask
+else
+fslmaths SWM_atlas.nii.gz tmp_swm_mask
+fi
 
+end=`fslstats $1 -R|awk '{print $2}'`
+end=${end%.*}
+
+i=1
+while [ "$i" -le "$end" ]; do
+  i=$(($i + 1))
+  
+min=`echo "$i-0.5"|bc`
+max=`echo "$i+0.5"|bc`
+ind=`echo "$i-1"|bc`
+
+fslmaths $1 -thr $min -uthr $max -bin mask
+output[$ind]=,`fslstats $2 -k mask -M`
+  
+done
+echo "${2}${output[*]}"
