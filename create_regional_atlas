@@ -2,6 +2,8 @@
 
 #This function creates parcellates superficial white matter (SWM) ROIs
 #requires FSL
+#Example:
+#./create_regional_atlas SWM_mean_FA_mask_man.nii.gz HarvardOxford-cort-prob-1mm.nii.gz  SWM_atlas
 
 usage() {
 echo ""
