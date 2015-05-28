@@ -14,12 +14,14 @@ exit 1
 
 if [ $4 = ""]
 then
-sigma=3
+sigma=5
 else
 sigma=$4
 fi
 
 fslmaths  $1 -sub $1 zero
-fslmerge -t tmp_4D zero $2
-fslmaths tmp_4D -s $sigma -Tmax -mul $1 $3
+fslmerge -t tmp_swm_4D zero $2
+fslmaths tmp_swm_4D -mul 100 -s $sigma tmp_swm_smooth 
+fslmaths tmp_swm_smooth -Tmaxn tmp_swm_maxn
+fslmaths tmp_swm_maxn -mul $1 $3
 
