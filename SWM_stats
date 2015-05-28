@@ -18,7 +18,6 @@
 usage() {
 echo ""
 echo "Usage: SWM_stats SWM_atlas.nii.gz input_image.nii.gz [mask.nii.gz]"
-echo "NOTE: SWM_mask and 4D atlas file should be in the same space" 
 echo ""
 exit 1
 }
