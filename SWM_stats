@@ -23,7 +23,7 @@ exit 1
 }
 [ "$2" = "" ] && usage
 
-rand=`echo "$[ 1 + $[ RANDOM % 10000000 ]]"`
+rand=`echo "$RANDOM"`
 
 if [ ! $3 = "" ]
 then
