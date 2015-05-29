@@ -23,11 +23,13 @@ exit 1
 }
 [ "$2" = "" ] && usage
 
+rand=`echo "$[ 1 + $[ RANDOM % 10000000 ]]"`
+
 if [ ! $3 = "" ]
 then
-fslmaths $1 -mul $3 tmp_swm_mask
+fslmaths $1 -mul $3 tmp_swm_mask_$rand
 else
-fslmaths $1 tmp_swm_mask
+fslmaths $1 tmp_swm_mask_$rand
 fi
 
 end=`fslstats $1 -R|awk '{print $2}'`
@@ -41,8 +43,9 @@ min=`echo "$i-0.5"|bc`
 max=`echo "$i+0.5"|bc`
 ind=`echo "$i-1"|bc`
 
-fslmaths tmp_swm_mask -thr $min -uthr $max -bin mask
-output[$ind]=`fslstats $2 -k mask -M`
-  
+fslmaths tmp_swm_mask_$rand -thr $min -uthr $max -bin mask_$rand
+output[$ind]=`fslstats $2 -k mask_$rand -M`
+
 done
 echo "${2} ${output[*]}"
+rm *$rand*gz
