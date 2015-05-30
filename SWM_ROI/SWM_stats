@@ -18,6 +18,7 @@
 usage() {
 echo ""
 echo "Usage: SWM_stats SWM_atlas.nii.gz input_image.nii.gz [mask.nii.gz]"
+echo "input_image.nii.gz may be either a 3D or a 4D file"
 echo ""
 exit 1
 }
@@ -35,9 +36,16 @@ fi
 end=`fslstats $1 -R|awk '{print $2}'`
 end=${end%.*}
 
+dim=`fslinfo $2 |grep ^dim4|awk 'print {$2}'`
+
+if [ dim -eq 1 ]
+then
+##### 3D File
+
 i=1
 while [ "$i" -le "$end" ]; do
-  i=$(($i + 1))
+
+i=$(($i + 1))
   
 min=`echo "$i-0.5"|bc`
 max=`echo "$i+0.5"|bc`
@@ -48,4 +56,30 @@ output[$ind]=`fslstats $2 -k mask_$rand -M`
 
 done
 echo "${2} ${output[*]}"
-rm *$rand*gz
+rm *${rand}*gz
+
+else
+
+##### 4D File
+
+i=1
+while [ "$i" -le "$end" ]; do
+
+i=$(($i + 1))
+
+min=`echo "$i-0.5"|bc`
+max=`echo "$i+0.5"|bc`
+ind=`echo "$i-1"|bc`
+
+fslmaths tmp_swm_mask_$rand -thr $min -uthr $max -bin mask_$rand
+fslstats -t $input -k mask_$rand -M>${ind}.${rand}txt
+
+done
+
+
+paste -d" " *.{rand}txt
+
+rm *${rand}*gz
+rm *${rand}txt
+
+fi
