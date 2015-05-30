@@ -1,0 +1,42 @@
+#!/bin/bash
+#Generates 4D file for sub analysis
+
+#Arash Nazeri, Kimel Family Translational Imaging-Genetics Research Lab
+
+#Developed at Kimel Family Translational Imaging Genetics Ressearch
+#Laboratory (TIGR), Research Imaging Centre, Campbell Family Mental
+#Health Institute,Centre for Addiction and Mental Health (CAMH),
+#Toronto, ON, Canada
+# http://imaging-genetics.camh.ca
+
+
+usage() {
+echo ""
+echo "Usage: sub_analysis 4d_file out_dir exclusion_number out_4D"
+echo ""
+exit 1
+}
+
+[ "$4" = "" ] && usage
+
+
+input=$1
+out_dir=$2
+missing_file=$3
+
+mkdir $out_dir
+
+cp $input $out_dir
+cd $out_dir
+
+fslsplit $input
+
+
+while read line
+
+do
+number=`printf "%04d" $line`
+rm "vol${number}.nii.gz
+done<$missing_file
+
+fslmerge -t $4 vol* 
