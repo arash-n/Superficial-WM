@@ -10,6 +10,7 @@
 # http://imaging-genetics.camh.ca
 
 #requires FSL; Should be performed after tbss_3_postreg -S
+#this is a modified version of tbss_4_prestats command
 
 usage() {
 echo ""
@@ -38,3 +39,6 @@ distancemap -i SWM_mean_FA_skeleton_mask_dst -o SWM_mean_FA_skeleton_mask_dst
 fslmaths all_FA -mul $1 SWM_all_FA
 
 tbss_skeleton -i SWM_mean_FA -p $thresh SWM_mean_FA_skeleton_mask_dst zero SWM_all_FA SWM_all_FA_skeletonise
+
+echo "as in TBSS, now run stats - for example:"
+echo "randomise -i SWM_all_FA_skeletonise -o swm_tbss -m SWM_mean_FA_skeleton_mask -d design.mat -t design.con -n 10000 --T2 -V"
