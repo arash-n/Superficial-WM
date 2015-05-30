@@ -1,0 +1,40 @@
+#!/bin/bash
+#Restricts TBSS analysis to SWM
+
+#Arash Nazeri, Kimel Family Translational Imaging-Genetics Research Lab
+
+#Developed at Kimel Family Translational Imaging Genetics Ressearch
+#Laboratory (TIGR), Research Imaging Centre, Campbell Family Mental
+#Health Institute,Centre for Addiction and Mental Health (CAMH),
+#Toronto, ON, Canada
+# http://imaging-genetics.camh.ca
+
+#requires FSL; Should be performed after tbss_3_postreg -S
+
+usage() {
+echo ""
+echo "Usage: tbss_swm SWM_mask.nii.gz <FA threshold>"
+echo ""
+exit 1
+}
+
+[ "$2" = "" ] && usage
+
+thresh=$2
+
+fslmaths $1 -mul mean_FA SWM_mean_FA
+
+fslmaths $1 -mul 0 zero
+
+fslmaths all_FA -max 0 -Tmin -bin -mul $1  SWM_mean_FA_mask -odt char
+
+tbss_skeleton -i SWM_mean_FA -o SWM_mean_FA_skeleton
+fslmaths SWM_mean_FA_skeleton -thr $thresh -bin SWM_mean_FA_skeleton_mask
+
+fslmaths SWM_mean_FA_mask -mul -1 -add 1 -add SWM_mean_FA_skeleton_mask SWM_mean_FA_skeleton_mask_dst
+
+distancemap -i SWM_mean_FA_skeleton_mask_dst -o SWM_mean_FA_skeleton_mask_dst
+
+fslmaths all_FA -mul $1 SWM_all_FA
+
+tbss_skeleton -i SWM_mean_FA -p $thresh SWM_mean_FA_skeleton_mask_dst zero SWM_all_FA SWM_all_FA_skeletonise
