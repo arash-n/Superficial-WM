@@ -1,7 +1,9 @@
 #!/bin/bash
 #Generates 4D file for sub analysis
+#The exclusion numbers start from 1
 
-#Arash Nazeri, Kimel Family Translational Imaging-Genetics Research Lab
+#Arash Nazeri and Tina Roostaei 
+#Kimel Family Translational Imaging-Genetics Research Lab
 
 #Developed at Kimel Family Translational Imaging Genetics Ressearch
 #Laboratory (TIGR), Research Imaging Centre, Campbell Family Mental
