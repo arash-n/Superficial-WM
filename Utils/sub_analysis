@@ -36,7 +36,7 @@ while read line
 do
 m=$((line-1))
 number=`printf "%04d" $m`
-rm "vol${number}.nii.gz
+rm vol${number}.nii.gz
 done<$missing_file
 
 fslmerge -t $4 vol* 
