@@ -21,6 +21,8 @@ exit 1
 
 [ "$2" = "" ] && usage
 
+cd stats
+
 thresh=$2
 
 fslmaths $1 -mul mean_FA SWM_mean_FA
@@ -38,7 +40,7 @@ distancemap -i SWM_mean_FA_skeleton_mask_dst -o SWM_mean_FA_skeleton_mask_dst
 
 fslmaths all_FA -mul $1 SWM_all_FA
 
-tbss_skeleton -i SWM_mean_FA -p $thresh SWM_mean_FA_skeleton_mask_dst zero SWM_all_FA SWM_all_FA_skeletonise
+tbss_skeleton -i SWM_mean_FA -p $thresh SWM_mean_FA_skeleton_mask_dst zero SWM_all_FA SWM_all_FA_skeletonised
 
 echo "as in TBSS, now run stats - for example:"
 echo "randomise -i SWM_all_FA_skeletonise -o swm_tbss -m SWM_mean_FA_skeleton_mask -d design.mat -t design.con -n 10000 --T2 -V"
