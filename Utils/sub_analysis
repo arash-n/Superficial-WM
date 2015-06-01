@@ -14,7 +14,8 @@
 
 usage() {
 echo ""
-echo "Usage: sub_analysis 4d_file out_dir exclusion_numbers out_4D"
+echo "Usage: sub_analysis 4d_file out_dir exclusion_numbers.txt out_4D"
+echo "exclusion_numbers.txt should include numbers (starts from 1) corresponding to the images to be excluded from the 4D files (1 per row)"
 echo ""
 exit 1
 }
