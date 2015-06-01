@@ -42,3 +42,5 @@ rm vol${number}.nii.gz
 done<$missing_file
 
 fslmerge -t $4 vol* 
+
+rm vol*.gz
