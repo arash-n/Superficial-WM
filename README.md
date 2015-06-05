@@ -9,7 +9,7 @@ Download the SWM-mask from the following link:
 
 https://www.dropbox.com/s/4v15j41ptj46zbu/SWM_mean_FA_mask_man.nii.gz?dl=0
 
-#####Installation for Linux:
+#####Installation:
 ```
 mkdir /path/to/gitfolder/
 cd /path/to/gitfolder/
@@ -18,6 +18,8 @@ git clone github.com/arash-n/Superficial-WM
 cp Superficial-WM/*/* scripts
 echo "PATH=/path/to/gitfolder/scripts:${PATH}">>~/.bashrc
 ```
+Alternatively, you can use a texteditor (e.g. gedit or nano) to paste the last line to the .bashrc (Linux) or .bash_profile (MacOS) in your home folders.
+
 If you use SWM mask in your research, please make sure that you reference the following articles:
 
 #####References:
