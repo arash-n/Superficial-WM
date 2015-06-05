@@ -11,12 +11,12 @@ https://www.dropbox.com/s/4v15j41ptj46zbu/SWM_mean_FA_mask_man.nii.gz?dl=0
 
 #####Installation for Linux:
 ```
-  $ mkdir /path/to/gitfolder/
-  $ cd /path/to/gitfolder/
-  $ mkdir scripts
-  $ git clone github.com/arash-n/Superficial-WM
-  $ cp Superficial-WM/*/* scripts
-  $ echo "PATH=/path/to/gitfolder/scripts:${PATH}">>~/.bashrc
+mkdir /path/to/gitfolder/
+cd /path/to/gitfolder/
+mkdir scripts
+git clone github.com/arash-n/Superficial-WM
+cp Superficial-WM/*/* scripts
+echo "PATH=/path/to/gitfolder/scripts:${PATH}">>~/.bashrc
 ```
 If you use SWM mask in your research, please make sure that you reference the following articles:
 
