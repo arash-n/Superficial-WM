@@ -3,7 +3,7 @@
 
 ### Superficial White Matter Mask and Atlas for ROI Analysis
 
-Here we'll share superficial white matter (SWM) mask/atlases for use in TBSS or tractography analyses. The SWM mask is in MNI space and is created as described previously<sup>1</sup>. <b>This repository is still underconstruction.</b>
+Here we'll share superficial white matter (SWM) mask/atlases for use in TBSS or tractography analyses. The SWM mask is in MNI space and is created as described previously<sup>1</sup>. <b>This repository is still under construction.</b>
 
 Download the SWM-mask from the following link:
 
