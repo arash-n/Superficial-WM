@@ -36,9 +36,9 @@ fi
 end=`fslstats $1 -R|awk '{print $2}'`
 end=${end%.*}
 
-dim=`fslinfo $2 |grep ^dim4|awk 'print {$2}'`
+dim=`fslinfo $2 |grep ^dim4|awk '{print $2}'`
 
-if [ dim -eq 1 ]
+if [ $dim -eq 1 ]
 then
 ##### 3D File
 
