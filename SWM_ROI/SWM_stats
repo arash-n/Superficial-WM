@@ -77,7 +77,7 @@ fslstats -t $input -k mask_$rand -M>${ind}.${rand}txt
 done
 
 
-paste -d" " *.{rand}txt
+paste -d" " *.${rand}txt>>ROI.tsv
 
 rm *${rand}*gz
 rm *${rand}txt
