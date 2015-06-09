@@ -35,8 +35,8 @@ fi
 
 end=`fslstats $1 -R|awk '{print $2}'`
 end=${end%.*}
-
 dim=`fslinfo $2 |grep ^dim4|awk '{print $2}'`
+input=$2
 
 if [ $dim -eq 1 ]
 then
@@ -61,7 +61,7 @@ rm *${rand}*gz
 else
 
 ##### 4D File
-
+echo "Detected a 4D File: printing all mean values"
 i=1
 while [ "$i" -le "$end" ]; do
 
