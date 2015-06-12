@@ -11,12 +11,12 @@ https://www.dropbox.com/s/4v15j41ptj46zbu/SWM_mean_FA_mask_man.nii.gz?dl=0
 
 #####Installation:
 ```
-mkdir /path/to/gitfolder/
+mkdir /path/to/gitfolder/ #Change it to whatever folder you want to keep the SWM scripts.
 cd /path/to/gitfolder/
 mkdir scripts
-git clone github.com/arash-n/Superficial-WM
+git clone https://github.com/arash-n/Superficial-WM
 cp Superficial-WM/*/* scripts
-echo "PATH=/path/to/gitfolder/scripts:${PATH}">>~/.bashrc
+echo 'PATH=/path/to/gitfolder/scripts:${PATH}'>>~/.bashrc
 ```
 Alternatively, you can use a texteditor (e.g. gedit or nano) to paste the last line to the .bashrc (Linux) or .bash_profile (MacOS) in your home folders.
 
@@ -27,7 +27,7 @@ If you use SWM mask in your research, please make sure that you reference the fo
 
 2. Nazeri, A., Chakravarty, M. M., Felsky, D., Lobaugh, N. J., Rajji, T. K., Mulsant, B. H., & Voineskos, A. N. (2013). Alterations of superficial white matter in schizophrenia and relationship to cognitive performance. Neuropsychopharmacology, 38(10), 1954-1962.
 
-
-First Created on May 27 2015
+Last Update: June 12 2015
+First Created: May 27 2015
 Arash Nazeri
 
