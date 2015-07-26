@@ -45,15 +45,15 @@ then
 i=1
 while [ "$i" -le "$end" ]; do
 
-i=$(($i + 1))
   
 min=`echo "$i-0.5"|bc`
 max=`echo "$i+0.5"|bc`
 ind=`echo "$i-1"|bc`
-ind=$((1000+ind))
+#ind=$((1000+ind))
 
 fslmaths tmp_swm_mask_$rand -thr $min -uthr $max -bin mask_$rand
 output[$ind]=`fslstats $2 -k mask_$rand -M`
+i=$(($i + 1))
 
 done
 echo "${2} ${output[*]}"
@@ -66,15 +66,14 @@ echo "Detected a 4D File: printing all mean values"
 i=1
 while [ "$i" -le "$end" ]; do
 
-i=$(($i + 1))
-
 min=`echo "$i-0.5"|bc`
 max=`echo "$i+0.5"|bc`
 ind=`echo "$i-1"|bc`
-ind=$((1000+ind))
+#ind=$((1000+ind))
 
 fslmaths tmp_swm_mask_$rand -thr $min -uthr $max -bin mask_$rand
 fslstats -t $input -k mask_$rand -M>${ind}.${rand}txt
+i=$(($i + 1))
 
 done
 
