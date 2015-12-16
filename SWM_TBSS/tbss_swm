@@ -21,6 +21,12 @@ exit 1
 
 [ "$2" = "" ] && usage
 
+if [ ! -d stats ]
+then
+echo "No stats folder!"
+usage
+fi
+
 cd stats
 
 thresh=$2
