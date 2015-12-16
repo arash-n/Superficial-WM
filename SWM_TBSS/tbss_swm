@@ -23,6 +23,7 @@ exit 1
 
 if [ ! -d stats ]
 then
+echo ""
 echo "No stats folder found. The script needs to be called in the TBSS folder."
 usage
 fi
