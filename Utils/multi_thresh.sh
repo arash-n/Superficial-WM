@@ -31,7 +31,7 @@ increment=$4
 for i in `seq $min  $increment 1`; do 
 echo $i; 
 
-fslmaths $image -thr $i -bin tmp; 
-echo "${i},`fslstats tmp -V`"; >>$out
+fslmaths $vol -thr $i -bin tmp; 
+echo "${i},`fslstats tmp -V`" >>$out
 
 done
