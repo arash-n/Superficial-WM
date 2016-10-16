@@ -29,7 +29,7 @@ min=$3
 max=$4
 increment=$5
 
-for i in `seq $min  $increment 1`; do 
+for i in `seq $min  $increment $max`; do 
 echo $i; 
 
 fslmaths $vol -thr $i -bin tmp; 
