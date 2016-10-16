@@ -16,17 +16,18 @@
 
 usage() {
 echo ""
-echo "Usage: multi_thresh.sh input_vol out.csv minimum_threshold increment"
+echo "Usage: multi_thresh.sh input_vol out.csv minimum_threshold maximum_threshold increment"
 echo ""
 exit 1
 }
 
-[ "$4" = "" ] && usage
+[ "$5" = "" ] && usage
 
 vol=$1
 out=$2
 min=$3
-increment=$4
+max=$4
+increment=$5
 
 for i in `seq $min  $increment 1`; do 
 echo $i; 
