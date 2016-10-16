@@ -32,6 +32,6 @@ for i in `seq $min  $increment 1`; do
 echo $i; 
 
 fslmaths $vol -thr $i -bin tmp; 
-echo "${i},`fslstats tmp -V`" >>$out
+echo "${i},`fslstats tmp -V|awk '{print $1}`" >>$out
 
 done
