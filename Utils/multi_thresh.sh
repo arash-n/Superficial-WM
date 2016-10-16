@@ -36,3 +36,5 @@ fslmaths $vol -thr $i -bin tmp;
 echo "${i},`fslstats tmp -V|awk '{print $1}'`" >>$out
 
 done
+
+imrm tmp
