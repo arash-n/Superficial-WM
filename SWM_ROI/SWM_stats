@@ -81,6 +81,6 @@ done
 paste -d" " *.${rand}.txt>>ROI.tsv
 
 rm *${rand}*gz
-rm *${rand}txt
+rm *${rand}.txt
 
 fi
