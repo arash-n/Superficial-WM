@@ -72,13 +72,13 @@ ind=`echo "$i-1"|bc`
 ind_out=$((1000+ind))
 
 fslmaths tmp_swm_mask_$rand -thr $min -uthr $max -bin mask_$rand
-fslstats -t $input -k mask_$rand -M>${ind_out}.${rand}txt
+fslstats -t $input -k mask_$rand -M>${ind_out}.${rand}.txt
 i=$(($i + 1))
 
 done
 
 
-paste -d" " *.${rand}txt>>ROI.tsv
+paste -d" " *.${rand}.txt>>ROI.tsv
 
 rm *${rand}*gz
 rm *${rand}txt
